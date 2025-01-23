@@ -1,14 +1,14 @@
-from flask import Blueprint
-from ..service.book_service import get_book, get_books
+from flask import Blueprint, jsonify
+import src.service.book_service as book_service
 book = Blueprint('book', __name__, url_prefix='/api/books')
 
 @book.route('/', methods=['GET'])
 def get_books():
-    return get_books()
+    return jsonify(book_service.get_books())
 
 @book.route('/<book_id>', methods=['GET'])
 def get_book(book_id):
-    return get_book(book_id = book_id)
+    return jsonify(book_service.get_book(book_id))
 
 @book.route('/', methods=['POST'])
 def add_book():

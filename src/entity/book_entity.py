@@ -12,3 +12,12 @@ class BookEntity:
         self.book_author = book.book_author
         self.book_year = book.book_year
         self.quantity = book.quantity
+
+    def to_dict(self):
+        return {
+            "book_id": self.book_id,
+            "book_name": self.book_name,
+            "book_author": self.book_author,
+            "book_year": self.book_year,
+            "quantity": self.quantity
+        }
